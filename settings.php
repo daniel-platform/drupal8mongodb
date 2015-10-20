@@ -60,7 +60,7 @@ if (!empty($relationships['mongodb'][0])) {
 		'servers' => array(
 			'default' => array(
 				//'server' => $mongo_db_url,
-				'server' => "mongodb://main:main@{$relationships['mongodb'][0]['host']}",
+				'server' => "mongodb://main:@{$relationships['mongodb'][0]['host']}",
 			    'db' => $relationships['mongodb'][0]['path'],
 			)
 		),
