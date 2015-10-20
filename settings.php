@@ -50,8 +50,8 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 if (!empty($relationships['mongodb'][0])) {
 
 	$mongo_db_url = sprintf('mongodb://%s:%s@%s', 
-		$relationships['mongodb'][0]['user'],
-		$relationships['mongodb'][0]['pass'],
+		$relationships['mongodb'][0]['username'],
+		$relationships['mongodb'][0]['password'],
 		$relationships['mongodb'][0]['host']
 	);
 
