@@ -76,7 +76,7 @@ if (!empty($relationships['mongodb'][0])) {
         // Database name
         'db' => $relationships['mongodb'][0]['path'],
       )
-
+	)
   );
 	
 	
