@@ -49,9 +49,8 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 // MongoDB Settings
 if (!empty($relationships['mongodb'][0])) {
 
-	$mongo_db_url = sprintf('mongodb://%s:%s@%s', 
+	$mongo_db_url = sprintf('mongodb://%s@%s', 
 		$relationships['mongodb'][0]['username'],
-		$relationships['mongodb'][0]['password'],
 		$relationships['mongodb'][0]['host']
 	);
 
