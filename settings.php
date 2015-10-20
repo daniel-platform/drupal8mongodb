@@ -49,16 +49,18 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 // MongoDB Settings
 if (!empty($relationships['mongodb'][0])) {
 
-	$mongo_db_url = sprintf('mongodb://%s', 
-	//	$relationships['mongodb'][0]['username'],
-	//	$relationships['mongodb'][0]['password'],
+	//$mongo_db_url = sprintf('mongodb://%s',
+	/*$mongo_db_url = sprintf('mongodb://%s:%s@%s',  
+		$relationships['mongodb'][0]['username'],'',
+		//$relationships['mongodb'][0]['password'],
 		$relationships['mongodb'][0]['host']
-	);
+	);*/
 
 	$settings['mongo'] = array(
 		'servers' => array(
 			'default' => array(
-				'server' => $mongo_db_url,
+				//'server' => $mongo_db_url,
+				'server' => "mongodb://{$relationships['mongodb'][0]['host']}",
 			    'db' => $relationships['mongodb'][0]['path'],
 			)
 		),
