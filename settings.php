@@ -49,11 +49,12 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 // MongoDB Settings
 if (!empty($relationships['mongodb'][0])) {
 
-
-	$mongo_db_url = sprintf('mongodb://%s:%s@%s',  
+/*
+	$mongo_db_url = sprintf('mongodb://%s:%s@%s:%s',  
 		$relationships['mongodb'][0]['username'],
 		$relationships['mongodb'][0]['password'],
-		$relationships['mongodb'][0]['host']
+		$relationships['mongodb'][0]['host'],
+		$relationships['mongodb'][0]['port']
 	);
 
 	$settings['mongo'] = array(
@@ -64,6 +65,32 @@ if (!empty($relationships['mongodb'][0])) {
 			)
 		),
 	);
+	*/
+
+	  $settings['mongo'] = array(
+    'servers' => array(
+      // Connection name/alias
+      'default' => array(
+        // Omit USER:PASS@ if Mongo isn't configured to use authentication.
+        'server' => "mongodb://{$relationships['mongodb'][0]['host']}",
+        // Database name
+        'db' => 'drupal_default',
+      ),
+      // Connection name/alias
+      'floodhost' => array(
+        'server' => "mongodb://{$relationships['mongodb'][0]['host']}",
+        'db' => 'flood',
+      ),
+    ),
+    'collections' => array(
+      'flood' => 'floodhost',
+    ),
+  );
+	
+	
+	
+	
+	
 	//$settings['cache']['default'] = 'cache.backend.mongodb';
 	//$settings['keyvalue_default'] = 'mongodb.keyvalue';
 }
