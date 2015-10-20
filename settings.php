@@ -48,12 +48,12 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 
 // MongoDB Settings
 if (!empty($relationships['mongodb'][0])) {
-	$mongo_db_url = http_build_url(array(
-          'scheme' => 'mongodb',
-          'user' => $relationships['mongodb'][0]['user'],
-          'pass' => $relationships['mongodb'][0]['pass'],
-          'host' => $relationships['mongodb'][0]['host']
-	));
+
+	$mongo_db_url = sprtinf('mongodb://%s:%s@%s', 
+		$relationships['mongodb'][0]['user'],
+		$relationships['mongodb'][0]['pass'],
+		$relationships['mongodb'][0]['host']
+	);
 
 	$settings['mongo'] = array(
 		'servers' => array(
