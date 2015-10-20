@@ -52,11 +52,13 @@ if (!empty($relationships['mongodb'][0])) {
 
 	$mongo_db_url = sprintf('mongodb://%s:%s@%s:%s',  
 		$relationships['mongodb'][0]['username'],
-//		$relationships['mongodb'][0]['password'],
-		'',
+		$relationships['mongodb'][0]['password'],
 		$relationships['mongodb'][0]['host'],
 		$relationships['mongodb'][0]['port']
 	);
+	
+	// Omit USER:PASS@ if Mongo isn't configured to use authentication.
+	//$mongo_db_url = "mongodb://{$relationships['mongodb'][0]['host']}";
 
 	$settings['mongo'] = array(
 		'servers' => array(
@@ -66,24 +68,6 @@ if (!empty($relationships['mongodb'][0])) {
 			)
 		),
 	);
-
-
-/*
-	  $settings['mongo'] = array(
-    'servers' => array(
-      // Connection name/alias
-      'default' => array(
-        // Omit USER:PASS@ if Mongo isn't configured to use authentication.
-        'server' => "mongodb://{$relationships['mongodb'][0]['username']}:{$relationships['mongodb'][0]['password']}@{$relationships['mongodb'][0]['host']}",
-        // Database name
-        'db' => $relationships['mongodb'][0]['path'],
-      )
-	)
-  );
-	*/
-	
-	
-	
 	
 	//$settings['cache']['default'] = 'cache.backend.mongodb';
 	//$settings['keyvalue_default'] = 'mongodb.keyvalue';
