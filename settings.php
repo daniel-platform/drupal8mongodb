@@ -45,3 +45,20 @@ if (isset($_ENV['PLATFORM_ROUTES'])) {
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
+
+// MongoDB Settings
+if (!empty($relationships['mongodb'][0])) {
+  $settings['mongo'] = array(
+    'servers' => array(
+      'default' => array(
+        'server' => http_build_url(
+          'scheme' => 'mongodb',
+          'user' => $relationships['mongodb'][0]['user'],
+          'pass' => $relationships['mongodb'][0]['pass'],
+          'host' => $relationships['mongodb'][0]['host']
+        ),
+        'db' => $relationships['mongodb'][0]['path'],
+      )
+    ),
+  );
+}
