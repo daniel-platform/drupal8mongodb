@@ -24,7 +24,7 @@ relationships:
     database: "mysql:mysql"
     solr: "solr:solr"
     redis: "redis:redis"
-	mongodb: "mongodb:mongodb:3.0"
+    mongodb: "mongodb:mongodb:3.0"
 
 # The configuration of app when it is exposed to the web.
 web:
