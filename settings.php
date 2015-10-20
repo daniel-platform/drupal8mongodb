@@ -72,19 +72,11 @@ if (!empty($relationships['mongodb'][0])) {
       // Connection name/alias
       'default' => array(
         // Omit USER:PASS@ if Mongo isn't configured to use authentication.
-        'server' => "mongodb://{$relationships['mongodb'][0]['host']}",
+        'server' => "mongodb://{$relationships['mongodb'][0]['username']}:{$relationships['mongodb'][0]['password']}@{$relationships['mongodb'][0]['host']}",
         // Database name
-        'db' => 'drupal_default',
-      ),
-      // Connection name/alias
-      'floodhost' => array(
-        'server' => "mongodb://{$relationships['mongodb'][0]['host']}",
-        'db' => 'flood',
-      ),
-    ),
-    'collections' => array(
-      'flood' => 'floodhost',
-    ),
+        'db' => $relationships['mongodb'][0]['path'],
+      )
+
   );
 	
 	
