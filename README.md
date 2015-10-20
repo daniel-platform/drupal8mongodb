@@ -1,4 +1,4 @@
-# Platform.sh Drupal 8.0 Example
+# Platform.sh Drupal 8.0 with MongoDB Example
 
 This is a no-thrills example of a minimal repository to deploy a Drupal 8.0 instance on Platform.sh
 
