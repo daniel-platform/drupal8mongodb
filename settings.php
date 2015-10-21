@@ -47,7 +47,7 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 }
 
 // MongoDB Settings
-if (!empty($relationships['mongodb'][0])) {
+
 
 	
   $settings['mongo'] = array(
@@ -72,4 +72,4 @@ if (!empty($relationships['mongodb'][0])) {
 	
 	//$settings['cache']['default'] = 'cache.backend.mongodb';
 	//$settings['keyvalue_default'] = 'mongodb.keyvalue';
-}
+
