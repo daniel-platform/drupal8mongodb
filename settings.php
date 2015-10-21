@@ -48,6 +48,7 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 
 // MongoDB Settings
 
+	$mongodb_connection = json_decode(base64_decode(getenv('PLATFORM_RELATIONSHIPS')))->mongodb[0];
 
 	
   $settings['mongo'] = array(
@@ -55,13 +56,13 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
       // Connection name/alias
       'default' => array(
         // Omit USER:PASS@ if Mongo isn't configured to use authentication.
-        'server' => 'mongodb://main:main@246.0.145.197',
+        'server' => 'mongodb://main:main@' . $mongodb_connection->host,
         // Database name
         'db' => 'main',
       ),
       // Connection name/alias
       'floodhost' => array(
-        'server' => 'mongodb://main:main@246.0.145.197',
+        'server' => 'mongodb://main:main@' . $mongodb_connection->host,
         'db' => 'flood',
       ),
     ),
