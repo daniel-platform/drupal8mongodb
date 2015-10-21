@@ -164,7 +164,7 @@ class MongoCollectionFactory {
     $connection_string = $server['server'];
     if (!isset($this->clients[$connection_string])) {
 	  var_dump($connection_string);
-	  var_dump($server_string);
+	  var_dump($server);
       $client = new \MongoClient($connection_string, $server['options']);
       if (!empty($server['read_preference'])) {
         $client->setReadPreference($server['read_preference']);
