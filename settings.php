@@ -59,11 +59,13 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
         'server' => 'mongodb://main:main@' . $mongodb_connection->host,
         // Database name
         'db' => 'main',
+        'connection_options' => array('db' => 'main', 'username' => 'main', 'password' => 'main'),
       ),
       // Connection name/alias
       'floodhost' => array(
         'server' => 'mongodb://main:main@' . $mongodb_connection->host,
         'db' => 'main',
+        'connection_options' => array('db' => 'main', 'username' => 'main', 'password' => 'main'),
       ),
     ),
     'collections' => array(
