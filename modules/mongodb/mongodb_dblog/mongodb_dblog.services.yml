@@ -1,0 +1,6 @@
+services:
+  mongodb.logger.dblog:
+    class: Drupal\mongodb_dblog\MongoDbLog
+    arguments: ['@mongo', '@logger.log_message_parser']
+    tags:
+      - { name: logger }

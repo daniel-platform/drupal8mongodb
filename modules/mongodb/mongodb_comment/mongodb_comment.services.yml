@@ -1,0 +1,6 @@
+services:
+  mongodb.comment.statistics:
+    class: Drupal\mongodb_comment\MongodbCommentStatistics
+    arguments: ['@mongo', '@current_user', '@entity.manager', '@state']
+    tags:
+      - { name: backend_overridable }

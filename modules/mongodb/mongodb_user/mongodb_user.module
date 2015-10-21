@@ -1,0 +1,10 @@
+<?php
+
+/**
+ *  Implements hook_entity_type_alter().
+ */
+function mongodb_user_entity_type_alter(array &$entity_types) {
+  if (isset($entity_types['user'])) {
+    $entity_types['user']->setStorageClass('Drupal\mongodb_user\MongodbUserStorage');
+  }
+}

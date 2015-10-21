@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * MongoDB dblog module.
+ */
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function mongodb_dblog_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'cron') {
+    unset($implementations['dblog']);
+  }
+}
+

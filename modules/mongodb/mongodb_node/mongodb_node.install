@@ -1,0 +1,7 @@
+<?php
+
+use Drupal\mongodb_node\MongodbNodeGrantStorage;
+
+function mongodb_node_install() {
+  MongodbNodeGrantStorage::writeDefaultMongo(\Drupal::service('mongo'));
+}

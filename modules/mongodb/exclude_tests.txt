@@ -1,0 +1,13 @@
+Drupal\node\Tests\NodeFieldAccessTest
+Drupal\node\Tests\NodeQueryAlterTest
+
+Drupal\node\Tests\NodeBlockFunctionalTest
+Drupal\node\Tests\NodeLinksTest
+Drupal\node\Tests\NodeLoadMultipleTest
+Drupal\node\Tests\NodeRSSContentTest
+Drupal\node\Tests\NodeAdminTest
+Drupal\node\Tests\NodeTitleTest
+Drupal\node\Tests\NodeTranslationUITest
+
+Drupal\system\Tests\Entity\EntityDefinitionUpdateTest
+Drupal\system\Tests\Entity\EntityBundleFieldTest

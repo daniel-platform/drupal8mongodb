@@ -1,0 +1,17 @@
+services:
+  config.storage:
+    alias: mongodb.config.storage
+  flood:
+    alias: mongodb.flood
+  file.usage:
+    alias: mongodb.file.usage
+  config.storage.snapshot:
+    alias: mongodb.config.storage.snapshot
+  router.dumper:
+    alias: mongodb.router.dumper
+  user.data:
+    alias: mongodb.user.data
+  router.route_provider:
+    alias: mongodb.router.route_provider
+  path.crud:
+    alias: mongodb.path.crud

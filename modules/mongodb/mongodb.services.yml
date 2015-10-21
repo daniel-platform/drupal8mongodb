@@ -1,0 +1,64 @@
+services:
+  mongo:
+    class: Drupal\mongodb\MongoCollectionFactory
+    arguments: ['@settings']
+    factory_method: create
+    factory_class: Drupal\mongodb\MongoCollectionFactory
+  cache.backend.mongodb:
+    class: Drupal\mongodb\CacheBackendMongodbFactory
+    arguments: ['@mongo', '@settings', '@cache_tags.invalidator.checksum.mongodb']
+  cache_tags.invalidator.checksum.mongodb:
+    class: Drupal\mongodb\CacheTagsChecksumMongodb
+    arguments: ['@mongo']
+    tags:
+      - { name: cache_tags_invalidator}
+  keyvalue.mongodb:
+    class: Drupal\mongodb\KeyvalueMongodbFactory
+    arguments: ['@mongo', '@settings', 'keyvalue']
+  keyvalue.expirable.mongodb:
+    class: Drupal\mongodb\KeyvalueMongodbFactory
+    arguments: ['@mongo', '@settings', 'keyvalue.expirable']
+  queue.mongodb:
+    class: Drupal\mongodb\QueueMongodbFactory
+    arguments: ['@mongo']
+  mongodb.flood:
+    class: Drupal\mongodb\MongodbFlood
+    arguments: ['@mongo', '@request_stack']
+  mongodb.file.usage:
+    class: Drupal\mongodb\MongodbFileUsage
+    arguments: ['@mongo']
+  mongodb.config.storage:
+    class: Drupal\mongodb\MongodbConfigStorage
+    arguments: ['@mongo', config]
+  mongodb.config.storage.snapshot:
+    class: Drupal\mongodb\MongodbConfigStorage
+    arguments: ['@mongo', config_snapshot]
+  mongodb.path.alias_storage:
+    class: Drupal\mongodb\MongodbPathAliasStorage
+    arguments: ['@mongo', '@module_handler']
+  mongodb.router.dumper:
+    class: Drupal\mongodb\MongodbRouterDumper
+    arguments: ['@mongo', '@state']
+  mongodb.router.route_provider:
+    class: Drupal\mongodb\MongodbRouterRouteProvider
+    arguments: ['@mongo', '@router.builder', '@state', '@path.current']
+    tags:
+      - { name: event_subscriber }
+  entity.query.mongodb:
+    class: Drupal\mongodb\Entity\QueryFactory
+    arguments: ['@mongo']
+  mongodb.lock:
+    class: Drupal\mongodb\MongodbLock
+    arguments: ['@mongo']
+  mongodb.lock.persistent:
+    class: Drupal\mongodb\MongodbLockPersistent
+    arguments: ['@mongo']
+  mongodb.batch.storage:
+    class: Drupal\mongodb\MongoBatchBackend
+    arguments: ['@mongo', '@session_manager', '@csrf_token']
+  mongodb.menu.tree_storage:
+    class: Drupal\mongodb\MongodbMenuTreeStorage
+    arguments: ['@mongo', '@cache.menu', '@cache_tags.invalidator', 'menu_tree']
+  block.repository.mongodb:
+    class: Drupal\mongodb\BlockRepositoryMongodb
+    arguments: ['@entity.manager', '@theme.manager', '@context.handler']

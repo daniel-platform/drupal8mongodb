@@ -1,0 +1,8 @@
+services:
+  mongo.logger:
+    class: Drupal\mongodb\Logger\Logger
+    arguments: [ "@mongo" ]
+
+  mongo.logger_controller:
+    class: Drupal\mongodb\Logger\LoggerController
+    arguments: [ "@mongo.logger", '@form_builder' ]

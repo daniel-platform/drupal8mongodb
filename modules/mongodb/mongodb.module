@@ -1,0 +1,59 @@
+<?php
+/**
+ * @file
+ * MongoDB core module.
+ */
+
+/**
+ * Implements hook_entity_type_alter
+ */
+function mongodb_entity_type_alter(array &$entity_types) {
+  /** @var \Drupal\Core\Config\Entity\ConfigEntityType[] $entity_types */
+  foreach ($entity_types as $entity_type) {
+    if ($entity_type->getStorageClass() == 'Drupal\Core\Entity\Sql\SqlContentEntityStorage') {
+      $entity_type->setStorageClass('Drupal\mongodb\Entity\ContentEntityStorage');
+    }
+    if (Drupal::moduleHandler()->moduleExists('views') && is_subclass_of($entity_type->getHandlerClass('views_data'), 'Drupal\views\EntityViewsData')) {
+      $entity_type->setHandlerClass('views_data', NULL);
+    }
+  }
+}
+
+/**
+ * Implements hook_batch_alter().
+ */
+function mongodb_batch_alter(&$batch) {
+  foreach ($batch['sets'] as $key => &$batch_set) {
+    if (isset($batch_set['operations']) && !isset($batch_set['queue'])) {
+      $batch_set += array(
+        'queue' => array(
+          'name' => 'drupal_batch:' . microtime(TRUE) . ':' . $key,
+          'class' => $batch['progressive'] ? 'Drupal\mongodb\BatchQueueMongodb' : 'Drupal\Core\Queue\BatchMemory',
+        ),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_simpletest_alter().
+ */
+function mongodb_simpletest_alter(&$groups) {
+  unset($groups['Views']);
+  array_walk($groups, function (&$info) {
+    foreach (array_keys($info) as $class_name) {
+      if (preg_match('/(^|\\\\)Views(\\\\|$)/', $class_name) || stripos($class_name, 'sql') !== FALSE || stripos($class_name, 'nodeaccess') !== FALSE) {
+        unset($info[$class_name]);
+      }
+    }
+  });
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function mongodb_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'cron' || $hook == 'requirements') {
+    unset($implementations['search']);
+  }
+}

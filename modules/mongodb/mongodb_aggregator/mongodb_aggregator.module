@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function mongodb_aggregator_entity_type_alter(array &$entity_types) {
+  if (isset($entity_types['aggregator_feed'])) {
+    $entity_types['aggregator_feed']->setStorageClass('Drupal\mongodb_aggregator\Entity\FeedStorage');
+    $entity_types['aggregator_item']->setStorageClass('Drupal\mongodb_aggregator\Entity\ItemStorage');
+  }
+}
