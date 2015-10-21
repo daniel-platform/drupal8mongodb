@@ -63,7 +63,7 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
       // Connection name/alias
       'floodhost' => array(
         'server' => 'mongodb://main:main@' . $mongodb_connection->host,
-        'db' => 'flood',
+        'db' => 'main',
       ),
     ),
     'collections' => array(
