@@ -54,7 +54,7 @@ if (!empty($relationships['mongodb'][0])) {
 	$settings['mongo'] = array(
 		'servers' => array(
 			'default' => array(
-				'server' => "mongodb://main:main@{mongodb_json->host}",
+				'server' => "mongodb://main:main@{$mongodb_json->host}",
 			    'db' => 'main',
 			)
 		),
