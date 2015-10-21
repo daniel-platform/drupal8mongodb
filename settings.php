@@ -51,14 +51,25 @@ if (!empty($relationships['mongodb'][0])) {
 
 	$mongodb_json = json_decode(base64_decode(getenv('PLATFORM_RELATIONSHIPS')))->mongodb[0];
 
-	$settings['mongo'] = array(
-		'servers' => array(
-			'default' => array(
-				'server' => "mongodb://main:main@{$mongodb_json->host}",
-			    'db' => 'main',
-			)
-		),
-	);
+  $settings['mongo'] = array(
+    'servers' => array(
+      // Connection name/alias
+      'default' => array(
+        // Omit USER:PASS@ if Mongo isn't configured to use authentication.
+        'server' => "mongodb://main:main@{$mongodb_json->host}",
+        // Database name
+        'db' => 'main',
+      ),
+      // Connection name/alias
+      'floodhost' => array(
+        'server' => 'mongodb://flood.example.com',
+        'db' => 'flood',
+      ),
+    ),
+    'collections' => array(
+      'flood' => 'floodhost',
+    ),
+  );
 	
 	//$settings['cache']['default'] = 'cache.backend.mongodb';
 	//$settings['keyvalue_default'] = 'mongodb.keyvalue';
