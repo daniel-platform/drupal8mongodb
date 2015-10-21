@@ -61,7 +61,7 @@ class MongoCollectionFactory {
       $server['options'] = array_merge($server['options'], array('connect' => TRUE));
     }
     // The default database for the default server is 'drupal'.
-    $this->serverInfo['default'] = array_merge($this->serverInfo['default'], array('db' => 'drupal');
+    $this->serverInfo['default'] = array_merge($this->serverInfo['default'], array('db' => 'drupal'));
     $this->collectionInfo = isset($mongo['collections']) ? $mongo['collections'] : array();
   }
 
