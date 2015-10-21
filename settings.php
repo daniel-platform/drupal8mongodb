@@ -51,7 +51,7 @@ if (!empty($relationships['mongodb'][0])) {
 
 	$mongodb_json = json_decode(base64_decode(getenv('PLATFORM_RELATIONSHIPS')))->mongodb[0];
 	
-	$mongo_db_url = sprintf('mongodb://%s:%s@%s/',  
+	$mongo_db_url = sprintf('mongodb://%s:%s@%s/main',  
 		'main',
 		'main',
 		$mongodb_json->host
