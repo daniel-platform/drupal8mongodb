@@ -49,13 +49,14 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 // MongoDB Settings
 if (!empty($relationships['mongodb'][0])) {
 
-
-	$mongo_db_url = sprintf('mongodb://%s:%s@%s:%s/',  
-		$relationships['mongodb'][0]['username'],
-		$relationships['mongodb'][0]['password'],
-		$relationships['mongodb'][0]['host'],
-		$relationships['mongodb'][0]['port']
+	$mongodb_json = json_decode(base64_decode(getenv('PLATFORM_RELATIONSHIPS')))->mongodb[0];
+	
+	$mongo_db_url = sprintf('mongodb://%s:%s@%s/',  
+		'main',
+		'main',
+		$mongodb_json->host,
 	);
+	
 	
 	// Omit USER:PASS@ if Mongo isn't configured to use authentication.
 	//$mongo_db_url = "mongodb://{$relationships['mongodb'][0]['host']}";
@@ -64,7 +65,7 @@ if (!empty($relationships['mongodb'][0])) {
 		'servers' => array(
 			'default' => array(
 				'server' => $mongo_db_url,
-			    'db' => $relationships['mongodb'][0]['path'],
+			    'db' => 'main',
 			)
 		),
 	);
