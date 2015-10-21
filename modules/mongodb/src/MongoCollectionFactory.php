@@ -161,11 +161,11 @@ class MongoCollectionFactory {
    * @return \MongoClient
    */
   protected function getClient($server) {
-    $connection_string = $server['server'];
+    $connection_string = $server['server'] . '/' . $server['db'];
     if (!isset($this->clients[$connection_string])) {
 	  echo "<pre>\n===============\n";
 	  print_r($connection_string);
-	  echo "===============\n";
+	  echo "\n===============\n";
 	  print_r($server);
   	  echo "===============\n<pre>\n";
       $client = new \MongoClient($connection_string, $server['options']);
