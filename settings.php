@@ -70,6 +70,6 @@ if (!empty($relationships['mongodb'][0])) {
     ),
   );
 	
-	//$settings['cache']['default'] = 'cache.backend.mongodb';
-//	$settings['keyvalue_default'] = 'mongodb.keyvalue';
+	$settings['cache']['default'] = 'cache.backend.mongodb';
+	$settings['keyvalue_default'] = 'mongodb.keyvalue';
 }
