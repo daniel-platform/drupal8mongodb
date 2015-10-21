@@ -57,7 +57,7 @@ if (!empty($relationships['mongodb'][0])) {
         // Omit USER:PASS@ if Mongo isn't configured to use authentication.
         'server' => 'mongodb://main:main@246.0.145.197',
         // Database name
-        'db' => 'drupal_default',
+        'db' => 'main',
       ),
       // Connection name/alias
       'floodhost' => array(
