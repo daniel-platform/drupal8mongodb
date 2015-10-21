@@ -163,11 +163,13 @@ class MongoCollectionFactory {
   protected function getClient($server) {
     $connection_string = $server['server'] . '/' . $server['db'];
     if (!isset($this->clients[$connection_string])) {
-	  echo "<pre>\n===============\n";
+
+/*	  echo "<pre>\n===============\n";
 	  print_r($connection_string);
 	  echo "\n===============\n";
 	  print_r($server);
   	  echo "===============\n<pre>\n";
+*/
       $client = new \MongoClient($connection_string, $server['options']);
       if (!empty($server['read_preference'])) {
         $client->setReadPreference($server['read_preference']);
