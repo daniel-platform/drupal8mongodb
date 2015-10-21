@@ -47,22 +47,28 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 }
 
 // MongoDB Settings
-//if (!empty($relationships['mongodb'][0])) {
+if (!empty($relationships['mongodb'][0])) {
 
-	//$mongodb_json = json_decode(base64_decode(getenv('PLATFORM_RELATIONSHIPS')))->mongodb[0];
 
-  $settings['mongo'] = array(
-    'servers' => array(
-      // Connection name/alias
-      'default' => array(
-        // Omit USER:PASS@ if Mongo isn't configured to use authentication.
-        'server' => 'mongodb://main:main@246.0.145.197',
-        // Database name
-        'db' => 'main',
-      )
-     )
-  );
+	$mongo_db_url = sprintf('mongodb://%s:%s@%s:%s',  
+		$relationships['mongodb'][0]['username'],
+		$relationships['mongodb'][0]['password'],
+		$relationships['mongodb'][0]['host'],
+		$relationships['mongodb'][0]['port']
+	);
+	
+	// Omit USER:PASS@ if Mongo isn't configured to use authentication.
+	$mongo_db_url = "mongodb://{$relationships['mongodb'][0]['host']}";
+
+	$settings['mongo'] = array(
+		'servers' => array(
+			'default' => array(
+				'server' => $mongo_db_url,
+			    'db' => $relationships['mongodb'][0]['path'],
+			)
+		),
+	);
 	
 	//$settings['cache']['default'] = 'cache.backend.mongodb';
 	//$settings['keyvalue_default'] = 'mongodb.keyvalue';
-//}
+}
