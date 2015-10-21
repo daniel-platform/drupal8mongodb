@@ -56,7 +56,7 @@ if (!empty($relationships['mongodb'][0])) {
       // Connection name/alias
       'default' => array(
         // Omit USER:PASS@ if Mongo isn't configured to use authentication.
-        'server' => "mongodb://main:main@{$mongodb_json->host}",
+        'server' => "mongodb://main:main@246.0.145.197",
         // Database name
         'db' => 'main',
       ),
