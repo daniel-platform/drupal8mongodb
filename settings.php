@@ -54,7 +54,7 @@ if (!empty($relationships['mongodb'][0])) {
 	$mongo_db_url = sprintf('mongodb://%s:%s@%s/',  
 		'main',
 		'main',
-		$mongodb_json->host,
+		$mongodb_json->host
 	);
 	
 	
