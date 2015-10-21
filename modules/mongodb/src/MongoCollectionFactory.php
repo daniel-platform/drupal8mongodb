@@ -52,7 +52,7 @@ class MongoCollectionFactory {
     // The default server needs to exist.
     $this->serverInfo = array_merge($this->serverInfo, array('default' => array()));
     foreach ($this->serverInfo as &$server) {
-      $server array_merge($server, array(
+      $server = array_merge($server, array(
         // The default server connection string.
         'server' => 'mongodb://localhost:27017',
         'options' => array(),
