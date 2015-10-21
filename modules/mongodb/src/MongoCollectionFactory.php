@@ -46,21 +46,22 @@ class MongoCollectionFactory {
    * @param array $mongo
    */
   function __construct(array $mongo) {
-    $mongo += array('servers' => array());
+  	$mongo = array_merge($mongo, array('servers' => array()));
+
     $this->serverInfo = $mongo['servers'];
     // The default server needs to exist.
-    $this->serverInfo += array('default' => array());
+    $this->serverInfo = array_merge($this->serverInfo, array('default' => array());
     foreach ($this->serverInfo as &$server) {
-      $server += array(
+      $server array_merge($server, array(
         // The default server connection string.
         'server' => 'mongodb://localhost:27017',
         'options' => array(),
-      );
+      ));
       // By default, connect immediately.
-      $server['options'] += array('connect' => TRUE);
+      $server['options'] = array_merge($server['options'], array('connect' => TRUE));
     }
     // The default database for the default server is 'drupal'.
-    $this->serverInfo['default'] += array('db' => 'drupal');
+    $this->serverInfo['default'] = array_merge($this->serverInfo['default'], array('db' => 'drupal');
     $this->collectionInfo = isset($mongo['collections']) ? $mongo['collections'] : array();
   }
 
