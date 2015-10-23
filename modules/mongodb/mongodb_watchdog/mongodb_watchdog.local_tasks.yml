@@ -1,9 +1,0 @@
-mongodb_watchdog.reports.denied:
-  base_route: mongodb_watchdog.reports.denied
-  route_name: mongodb_watchdog.reports.denied
-  title: "Access denied"
-
-mongodb_watchdog.reports.not_found:
-  base_route: mongodb_watchdog.reports.denied
-  route_name: mongodb_watchdog.reports.not_found
-  title: "Page not found"

@@ -1,4 +1,0 @@
-services:
-  mongodb.node.grant_storage:
-    class: Drupal\mongodb_node\MongodbNodeGrantStorage
-    arguments: ['@mongo', '@module_handler', '@language_manager']
