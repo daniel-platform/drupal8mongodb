@@ -6,4 +6,4 @@ projects[drupal][type] = core
 projects[drupal][version] = 8.0.0-rc1
 projects[drupal][patch][] = https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-78.patch
 
-; projects[mongodb][version] = 1.x-dev
+projects[mongodb][version] = 1.x-dev
