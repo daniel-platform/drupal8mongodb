@@ -1,6 +1,6 @@
-# Platform.sh Drupal 8.0 with MongoDB Example
+# Drupal 7.0 with MongoDB Example
 
-This is a no-thrills example of a minimal repository to deploy a Drupal 8.0 instance on Platform.sh
+This is an example of a minimal repository to deploy a Drupal 7.0 instance with MongoDB on Platform.sh
 
 This example is based on using the Drush Make build profile. You can see there is not much in terms of files comitted to this repository. You can learn (much) more on [Platform.sh Drupal Hosting Documentation](https://docs.platform.sh/toolstacks/php/drupal)
 

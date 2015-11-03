@@ -1,9 +1,16 @@
 api = 2
-core = 8.x
+core = 7.x
 
 ; Drupal core.
 projects[drupal][type] = core
-projects[drupal][version] = 8.0.0-rc1
-projects[drupal][patch][] = https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-78.patch
+projects[drupal][version] = 7.41
+projects[drupal][patch][] = "https://drupal.org/files/issues/install-redirect-on-empty-database-728702-36.patch"
 
+; Drush make allows a default sub directory for all contributed projects.
+defaults[projects][subdir] = contrib
+
+; Platform indicator module.
+projects[platform][version] = 1.3
+
+; MongoDB
 projects[mongodb][version] = 1.x-dev

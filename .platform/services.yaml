@@ -17,3 +17,4 @@ solr:
 mongodb:
     type: mongodb:3.0
     disk: 1024
+

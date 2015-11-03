@@ -7,14 +7,14 @@ name: php
 # The runtime the application uses.
 type: "php:5.6"
 
-# Configuration of the build of this application.
+# Configuration of the build of the application.
 build:
     flavor: drupal
 
 # The build-time dependencies of the app.
 dependencies:
     php:
-        "drush/drush": "dev-master"
+        "drush/drush": "7.1.0"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -29,7 +29,7 @@ relationships:
 # The configuration of app when it is exposed to the web.
 web:
     # The public directory of the app, relative to its root.
-    document_root: "/"
+    document_root: "/public"
     # The front-controller script to send non-static requests to.
     passthru: "/index.php"
 
@@ -40,12 +40,11 @@ disk: 2048
 mounts:
     "/public/sites/default/files": "shared:files/files"
     "/tmp": "shared:files/tmp"
-    "/config": "shared:files/config"
     "/private": "shared:files/private"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
-    # We run deploy hooks after your application has been deployed and started.
+    # We run deploy hook after your application has been deployed and started.
     deploy: |
       cd public
       drush -y updatedb
